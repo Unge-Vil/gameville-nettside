@@ -34,8 +34,9 @@ test("server-renders the GameVille landing page", async () => {
 });
 
 test("keeps essential accessibility and motion preferences", async () => {
-  const [page, css] = await Promise.all([
+  const [page, layout, css] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
   ]);
 
@@ -43,6 +44,8 @@ test("keeps essential accessibility and motion preferences", async () => {
   assert.match(page, /aria-label="Hovedmeny"/);
   assert.match(page, /aria-expanded=\{menuOpen\}/);
   assert.match(page, /target="_blank" rel="noreferrer"/);
+  assert.match(layout, /@fontsource\/barlow-condensed\/900\.css/);
+  assert.doesNotMatch(css, /Impact|Arial Black/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /focus-visible/);
 });
