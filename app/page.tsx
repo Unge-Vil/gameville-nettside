@@ -117,8 +117,31 @@ export default function Home() {
         </div>
       </div>
 
+      <section className="event-preview" id="arrangementer">
+        <div className="event-preview-top">
+          <div className="section-index">[ 001 / UPCOMING ]</div>
+          <div className="event-source">
+            <span>DATA HENTES FRA</span>
+            <Image src="/brands/lanhubben.png" alt="LAN-Hubben – powered by Haugesund LANkultur" width={440} height={113} />
+          </div>
+        </div>
+        <div className="event-preview-heading">
+          <h2>KOMMENDE<br /><span>EVENTER.</span></h2>
+          <p>Åpne kvelder, workshops og LAN dukker opp her automatisk når koblingen mot LAN-Hubben er klar.</p>
+        </div>
+        <div className="event-empty">
+          <div className="event-empty-code">00</div>
+          <div>
+            <span className="event-empty-label"><i /> LIVE FEED / VENTER</span>
+            <h3>Ingen kommende eventer</h3>
+            <p>Følg med — nye arrangementer vil vises her.</p>
+          </div>
+          <div className="event-empty-status">KOBLING KOMMER SNART <b>···</b></div>
+        </div>
+      </section>
+
       <section className="manifesto" id="innhold">
-        <div className="section-index">[ 001 / OM ]</div>
+        <div className="section-index">[ 002 / OM ]</div>
         <div className="manifesto-copy" id="om">
           <p className="kicker">ET STED Å LOGGE PÅ — IRL.</p>
           <h2>GAMING SKAL<br />IKKE HA EN<br /><em>INNGANGSBILLETT.</em></h2>
@@ -133,7 +156,7 @@ export default function Home() {
 
       <section className="experience" id="opplevelsen">
         <div className="experience-heading">
-          <div className="section-index">[ 002 / OPPLEVELSEN ]</div>
+          <div className="section-index">[ 003 / OPPLEVELSEN ]</div>
           <p>Ikke bare en skjerm.<br />En hel verden rundt den.</p>
         </div>
         <div className="activity-list">
@@ -178,31 +201,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="events" id="arrangementer">
-        <div className="events-top">
-          <div className="section-index">[ 003 / EVENTS ]</div>
-          <span className="coming-pill"><i /> SYNC KOMMER</span>
-        </div>
-        <div className="events-copy">
-          <h2>NESTE<br /><span>LEVEL</span><br />LASTER...</h2>
-          <div className="loading-bar"><span /></div>
-        </div>
-        <div className="events-info">
-          <p>Vi kobler snart på eventkalenderen fra LANhub. Da finner du åpne kvelder, workshops og de store LAN-helgene her.</p>
-          <div className="lanhub-source">
-            <div>
-              <span>EVENT SOURCE</span>
-              <b><i /> KOBLING KOMMER SNART</b>
-            </div>
-            <Image src="/brands/lanhubben.png" alt="LAN-Hubben – powered by Haugesund LANkultur" width={440} height={113} />
-          </div>
-          <div className="event-stats">
-            <div><strong>2×</strong><span>STORE LAN<br />HVERT ÅR</span></div>
-            <div><strong>0,-</strong><span>FOR DELTAKELSE,<br />MAT OG DRIKKE</span></div>
-          </div>
-        </div>
-      </section>
-
       <section className="partners" id="partnere">
         <div className="section-index">[ 004 / SAMARBEIDET ]</div>
         <div className="partners-heading">
@@ -217,21 +215,21 @@ export default function Home() {
               <Image src="/brands/forandringshuset.png" alt="Forandringshuset KFUK-KFUM" width={750} height={159} />
             </div>
             <p>Et inkluderende sted der unge kan delta, skape og utvikle seg på egne premisser.</p>
-            <i aria-hidden="true">BESØK ↗</i>
+            <i aria-hidden="true">ÅPNE NETTSIDE ↗</i>
           </a>
 
           <a className="partner-card partner-lan" href="https://lankultur.no/" target="_blank" rel="noreferrer" aria-label="Besøk LANkultur">
             <span className="partner-label">PROSJEKTPARTNER / 02</span>
             <Image src="/brands/lankultur.png" alt="LANkultur Haugesund" width={300} height={362} />
             <p>Gamingkompetanse, LAN-erfaring og teknologi — med erfaring fra store og små gamingarrangementer.</p>
-            <i aria-hidden="true">BESØK ↗</i>
+            <i aria-hidden="true">ÅPNE NETTSIDE ↗</i>
           </a>
 
           <a className="partner-card partner-ungevil" href="https://ungevil.no/" target="_blank" rel="noreferrer" aria-label="Besøk Unge Vil">
             <span className="partner-label">PROSJEKTPARTNER / 03</span>
             <Image src="/brands/unge-vil.png" alt="Unge Vil" width={508} height={75} />
             <p>Skaper muligheter sammen med unge — og bygger fellesskap der ideer blir til virkelighet.</p>
-            <i aria-hidden="true">BESØK ↗</i>
+            <i aria-hidden="true">ÅPNE NETTSIDE ↗</i>
           </a>
         </div>
       </section>
