@@ -14,14 +14,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "GameVille | Spill sammen. Hør til.",
-  description: "En gratis, åpen møteplass for data- og gaminginteressert ungdom i Haugesund.",
+  description: "En gratis, åpen møteplass for data- og gaminginteressert ungdom.",
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",
   },
   openGraph: {
     title: "GameVille | Spill sammen. Hør til.",
-    description: "Gratis gaming, workshops, åpne kvelder og LAN for ungdom i Haugesund.",
+    description: "Gratis gaming, workshops, åpne kvelder og LAN for ungdom.",
     type: "website",
     locale: "nb_NO",
   },

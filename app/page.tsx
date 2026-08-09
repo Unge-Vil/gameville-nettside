@@ -78,7 +78,7 @@ export default function Home() {
         <div className="crosshair crosshair-two" aria-hidden="true" />
 
         <div className="hero-copy">
-          <div className="eyebrow"><span>●</span> ÅPEN MØTEPLASS · HAUGESUND</div>
+          <div className="eyebrow"><span>●</span> ÅPEN MØTEPLASS</div>
           <h1>
             <span className="line line-white">SPILL</span>
             <span className="line line-stroke" data-text="SAMMEN.">SAMMEN.</span>
@@ -104,7 +104,7 @@ export default function Home() {
           </div>
           <Image className="hero-logo" src="/brands/gameville-icon.png" alt="GameVille" width={620} height={652} priority />
           <div className="player-tag"><i /> PLAYER 01 / READY</div>
-          <div className="coordinates">59.4138° N<br />5.2680° E</div>
+          <div className="coordinates">GAMEVILLE<br />PROJECT_01</div>
         </div>
 
         <div className="scroll-cue" aria-hidden="true"><span>SCROLL TO EXPLORE</span><i /></div>
@@ -223,7 +223,7 @@ export default function Home() {
           <a className="partner-card partner-lan" href="https://lankultur.no/" target="_blank" rel="noreferrer" aria-label="Besøk LANkultur">
             <span className="partner-label">PROSJEKTPARTNER / 02</span>
             <Image src="/brands/lankultur.png" alt="LANkultur Haugesund" width={300} height={362} />
-            <p>Gamingkompetanse, LAN-erfaring og teknologi — midt i Haugesund.</p>
+            <p>Gamingkompetanse, LAN-erfaring og teknologi — med erfaring fra store og små gamingarrangementer.</p>
             <i aria-hidden="true">BESØK ↗</i>
           </a>
 
@@ -249,7 +249,7 @@ export default function Home() {
           <Image src="/brands/gameville-icon.png" alt="" width={50} height={50} />
           <span>GAME<span>VILLE</span></span>
         </a>
-        <p>EN ÅPEN MØTEPLASS FOR GAMINGINTERESSERT UNGDOM I HAUGESUND.</p>
+        <p>EN ÅPEN MØTEPLASS FOR DATA- OG GAMINGINTERESSERT UNGDOM.</p>
         <div><span>© {new Date().getFullYear()} GAMEVILLE</span><a href="#top">TIL TOPP ↑</a></div>
       </footer>
     </main>

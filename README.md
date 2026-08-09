@@ -1,6 +1,6 @@
 # GameVille
 
-Offisiell nettside for GameVille – en gratis, åpen møteplass for data- og gaminginteressert ungdom i Haugesund.
+Offisiell nettside for GameVille – en gratis, åpen møteplass for data- og gaminginteressert ungdom.
 
 ## Lokal utvikling
 
