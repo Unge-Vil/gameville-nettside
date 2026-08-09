@@ -27,6 +27,14 @@ const activities = [
   },
 ];
 
+function NodeField({ variant = "cyan" }: { variant?: "cyan" | "pink" | "mixed" }) {
+  return (
+    <div className={`node-field node-field-${variant}`} aria-hidden="true">
+      {Array.from({ length: 9 }, (_, index) => <i className="node" key={index} />)}
+    </div>
+  );
+}
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -36,6 +44,44 @@ export default function Home() {
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll<HTMLElement>([
+      ".event-preview-heading",
+      ".event-empty",
+      ".manifesto-copy",
+      ".sticker-free",
+      ".experience-heading",
+      ".activity",
+      ".rig-copy",
+      ".screen-frame",
+      ".partners-heading",
+      ".partner-card",
+      ".final-cta h2",
+      ".final-cta .cta",
+    ].join(",")));
+
+    elements.forEach((element, index) => {
+      element.classList.add("reveal-on-scroll");
+      element.style.setProperty("--reveal-delay", `${(index % 4) * 75}ms`);
+    });
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      elements.forEach((element) => element.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -118,6 +164,7 @@ export default function Home() {
       </div>
 
       <section className="event-preview" id="arrangementer">
+        <NodeField variant="cyan" />
         <div className="event-preview-top">
           <div className="section-index">[ 001 / UPCOMING ]</div>
           <div className="event-source">
@@ -155,6 +202,7 @@ export default function Home() {
       </section>
 
       <section className="experience" id="opplevelsen">
+        <NodeField variant="mixed" />
         <div className="experience-heading">
           <div className="section-index">[ 003 / OPPLEVELSEN ]</div>
           <p>Ikke bare en skjerm.<br />En hel verden rundt den.</p>
@@ -202,6 +250,7 @@ export default function Home() {
       </section>
 
       <section className="partners" id="partnere">
+        <NodeField variant="pink" />
         <div className="section-index">[ 004 / SAMARBEIDET ]</div>
         <div className="partners-heading">
           <h2>BYGGET<br />SAMMEN.</h2>
@@ -235,6 +284,7 @@ export default function Home() {
       </section>
 
       <section className="final-cta">
+        <NodeField variant="mixed" />
         <div className="final-grid" aria-hidden="true" />
         <p>READY PLAYER?</p>
         <h2>DU HAR<br />EN PLASS<br /><span>HER.</span></h2>
