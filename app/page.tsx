@@ -54,6 +54,8 @@ export default function Home() {
       ".sticker-free",
       ".experience-heading",
       ".activity",
+      ".moments-heading",
+      ".moment-card",
       ".rig-copy",
       ".screen-frame",
       ".partners-heading",
@@ -81,12 +83,22 @@ export default function Home() {
     }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
 
     elements.forEach((element) => observer.observe(element));
-    return () => observer.disconnect();
+
+    const nodeFields = Array.from(document.querySelectorAll<HTMLElement>(".node-field"));
+    const nodeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.target.classList.toggle("nodes-active", entry.isIntersecting));
+    }, { threshold: 0.01, rootMargin: "180px 0px" });
+    nodeFields.forEach((field) => nodeObserver.observe(field));
+
+    return () => {
+      observer.disconnect();
+      nodeObserver.disconnect();
+    };
   }, []);
 
   return (
     <main>
-      <a className="skip-link" href="#innhold">Hopp til innhold</a>
+      <a className="skip-link" href="#arrangementer">Hopp til innhold</a>
 
       <nav className="nav" aria-label="Hovedmeny">
         <a className="brand" href="#top" aria-label="GameVille – til toppen">
@@ -97,6 +109,7 @@ export default function Home() {
         <button
           className="menu-button"
           type="button"
+          aria-label={menuOpen ? "Lukk meny" : "Åpne meny"}
           aria-expanded={menuOpen}
           aria-controls="nav-links"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -104,7 +117,7 @@ export default function Home() {
           <span />
           <span />
           <span />
-          <b className="sr-only">Åpne meny</b>
+          <b className="sr-only">{menuOpen ? "Lukk meny" : "Åpne meny"}</b>
         </button>
 
         <div className={`nav-links ${menuOpen ? "is-open" : ""}`} id="nav-links">
@@ -112,7 +125,7 @@ export default function Home() {
           <a href="#opplevelsen" onClick={() => setMenuOpen(false)}>Opplevelsen</a>
           <a href="#partnere" onClick={() => setMenuOpen(false)}>Samarbeidet</a>
           <a className="nav-status" href="#arrangementer" onClick={() => setMenuOpen(false)}>
-            <i /> Events snart
+            <i /> Eventer
           </a>
         </div>
       </nav>
@@ -134,8 +147,8 @@ export default function Home() {
             Gratis gaming, heftige rigger og et fellesskap med plass til deg. Ingen paywall. Ingen krav. Bare møt opp.
           </p>
           <div className="hero-actions">
-            <a className="cta cta-primary" href="#om"><span>ENTER GAMEVILLE</span><b>↘</b></a>
-            <a className="text-link" href="#opplevelsen">Se hva som skjer <span>→</span></a>
+            <a className="cta cta-primary" href="#arrangementer"><span>SE KOMMENDE EVENTER</span><b>↘</b></a>
+            <a className="text-link" href="#om">Hva er GameVille? <span>→</span></a>
           </div>
         </div>
 
@@ -182,14 +195,15 @@ export default function Home() {
             <span className="event-empty-label"><i /> LIVE FEED / VENTER</span>
             <h3>Ingen kommende eventer</h3>
             <p>Følg med — nye arrangementer vil vises her.</p>
+            <a className="event-empty-link" href="#partnere">Møt samarbeidspartnerne <span>→</span></a>
           </div>
           <div className="event-empty-status">KOBLING KOMMER SNART <b>···</b></div>
         </div>
       </section>
 
-      <section className="manifesto" id="innhold">
+      <section className="manifesto" id="om">
         <div className="section-index">[ 002 / OM ]</div>
-        <div className="manifesto-copy" id="om">
+        <div className="manifesto-copy">
           <p className="kicker">ET STED Å LOGGE PÅ — IRL.</p>
           <h2>GAMING SKAL<br />IKKE HA EN<br /><em>INNGANGSBILLETT.</em></h2>
           <div className="manifesto-bottom">
@@ -219,6 +233,44 @@ export default function Home() {
               <div className="activity-arrow" aria-hidden="true">↗</div>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="moments" aria-labelledby="moments-title">
+        <NodeField variant="mixed" />
+        <div className="moments-heading">
+          <div>
+            <div className="section-index">[ GAMEVILLE / IRL ]</div>
+            <h2 id="moments-title">MER ENN<br /><span>BARE SPILL.</span></h2>
+          </div>
+          <p>Rigging, nye venner, gaming, teknologi og den obligatoriske pizzapausen. Dette er GameVille i virkeligheten.</p>
+        </div>
+
+        <div className="moments-grid">
+          <figure className="moment-card moment-main">
+            <Image src="/gallery/lan.jpg" alt="GameVille-LAN med mange deltakere og gaming-PC-er" width={2048} height={1153} sizes="(max-width: 720px) 82vw, 58vw" />
+            <figcaption><span>01</span> LAN-KVELD / FELLESSKAP</figcaption>
+          </figure>
+          <figure className="moment-card moment-rigging">
+            <Image src="/gallery/rigging.jpg" alt="Deltakere som rigger gamingutstyr før et arrangement" width={1800} height={1350} sizes="(max-width: 720px) 82vw, 20vw" />
+            <figcaption><span>02</span> RIGGING / TEAMWORK</figcaption>
+          </figure>
+          <figure className="moment-card moment-server">
+            <Image src="/gallery/server-rack.jpg" alt="Arbeid med servere og nettverksutstyr" width={1800} height={1350} sizes="(max-width: 720px) 82vw, 20vw" />
+            <figcaption><span>03</span> SERVER / NETTVERK</figcaption>
+          </figure>
+          <figure className="moment-card moment-pizza">
+            <Image src="/gallery/pizza.jpg" alt="En stor stabel pizza klar til deltakerne" width={1800} height={1350} sizes="(max-width: 720px) 82vw, 38vw" />
+            <figcaption><span>04</span> MATPAUSE / INKLUDERT</figcaption>
+          </figure>
+          <figure className="moment-card moment-gaming">
+            <Image src="/gallery/gaming.jpg" alt="Venner som spiller sammen i sofakroken" width={500} height={282} sizes="(max-width: 720px) 82vw, 24vw" />
+            <figcaption><span>05</span> COUCH CO-OP</figcaption>
+          </figure>
+          <figure className="moment-card moment-vr">
+            <Image src="/gallery/vr.jpg" alt="To deltakere som prøver VR-spill" width={500} height={282} sizes="(max-width: 720px) 82vw, 28vw" />
+            <figcaption><span>06</span> VR / NYE VERDENER</figcaption>
+          </figure>
         </div>
       </section>
 

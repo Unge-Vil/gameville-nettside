@@ -27,6 +27,10 @@ test("server-renders the GameVille landing page", async () => {
   assert.match(html, /HØR TIL\./);
   assert.match(html, /LAN-Hubben/);
   assert.match(html, /KOBLING KOMMER SNART/);
+  assert.match(html, /SE KOMMENDE EVENTER/);
+  assert.match(html, /Møt samarbeidspartnerne/);
+  assert.match(html, /MER ENN/);
+  assert.match(html, /LAN-KVELD \/ FELLESSKAP/);
   assert.match(html, /Forandringshuset/);
   assert.match(html, /Unge Vil/);
   assert.match(html, /LANkultur/);
@@ -43,9 +47,13 @@ test("keeps essential accessibility and motion preferences", async () => {
   assert.match(page, /className="skip-link"/);
   assert.match(page, /aria-label="Hovedmeny"/);
   assert.match(page, /aria-expanded=\{menuOpen\}/);
+  assert.match(page, /menuOpen \? "Lukk meny" : "Åpne meny"/);
+  assert.match(page, /className="manifesto" id="om"/);
   assert.match(page, /target="_blank" rel="noreferrer"/);
   assert.match(layout, /@fontsource\/barlow-condensed\/900\.css/);
   assert.doesNotMatch(css, /Impact|Arial Black/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
+  assert.match(css, /animation-play-state:paused/);
+  assert.match(css, /position:fixed/);
   assert.match(css, /focus-visible/);
 });
